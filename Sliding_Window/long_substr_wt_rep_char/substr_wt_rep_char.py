@@ -25,3 +25,17 @@ Notice that the answer must be a substring, "pwke" is a subsequence and not a su
 """
 
 def lengthOfLongestSubstring(s):
+    charS = set()
+    l = 0
+    res = 0
+    for c in range(len(s)):
+        while s[c] in charS:
+            charS.remove(s[l])
+            l += 1
+        charS.add(s[c])
+        res = max(res, c - l + 1)
+    return res
+
+if __name__ == "__main__":
+    s = input()
+    print(lengthOfLongestSubstring(s))
