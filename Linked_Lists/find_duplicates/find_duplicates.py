@@ -6,3 +6,17 @@ def findDuplicate(nums):
             s[n] += 1
             if s[n] > 1:
                 return n
+
+def findDuplicate(nums):
+    slow, fast = 0, 0
+    while True:
+        slow = nums[slow]
+        fast = nums[nums[fast]]
+        if slow == fast:
+            break
+    slow = 0
+    while True:
+        slow = nums[slow]
+        fast = nums[fast]
+        if slow == fast:
+            return slow
